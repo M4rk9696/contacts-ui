@@ -3,7 +3,7 @@ server {
     server_name  localhost;
     location / {
         root   /opt/contacts-ui/;
-        index  index.html index.htm;
+        index  index.html;
     }
 
     error_page   500 502 503 504  /50x.html;
@@ -12,6 +12,6 @@ server {
     }
 
     location /contacts {
-        proxy_pass http://${API_HOST}:${API_PORT};
+        proxy_pass http://api:3000;
     }
 }
