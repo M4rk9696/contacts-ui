@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- iojs
+services:
+- docker
+cache:
+  yarn: true
+scripts:
+- yarn build --production
+- docker build -t mark9696/contacts-ui:v1 .
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker push mark9696/contacts-ui
